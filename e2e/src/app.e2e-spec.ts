@@ -13,6 +13,15 @@ describe('workspace-project App', () => {
     expect(await page.getTitleText()).toEqual('TestApp app is running!');
   });
 
+  it('should add user', async () => {
+    await page.navigateTo();
+    page.setName('I Hirani');
+    page.clickAddName();
+
+    expect(await page.getNamesList()).toEqual('I Hirani');
+  });
+
+
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
